@@ -11,8 +11,8 @@ import java.util.Date;
  * @author nitin
  */
 public class Account {
-    private String routingNumber;
-    private String accountNumber;
+    private int routingNumber;
+    private int accountNumber;
     private String bankName;
     private int balance;
     private Date createdOn;
@@ -25,19 +25,19 @@ public class Account {
         return createdOn;
     }
 
-    public String getRoutingNumber() {
+    public int getRoutingNumber() {
         return routingNumber;
     }
 
-    public void setRoutingNumber(String routingNumber) {
+    public void setRoutingNumber(int routingNumber) {
         this.routingNumber = routingNumber;
     }
 
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 

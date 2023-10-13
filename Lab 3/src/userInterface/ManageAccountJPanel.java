@@ -49,6 +49,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         btnDeleteAccount = new javax.swing.JButton();
         txtAccountNumber = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         tblAccount.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,6 +103,8 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("(Only Numbers)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +118,9 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel1)))
                 .addGap(111, 111, 111))
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -132,7 +137,8 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
-                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(btnViewDetails)
                 .addGap(18, 18, 18)
@@ -182,8 +188,9 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        try{
         if(!txtAccountNumber.getText().equals("")){
-            Account result = accountDirectory.searchAccount(txtAccountNumber.getText());
+            Account result = accountDirectory.searchAccount(Integer.parseInt(txtAccountNumber.getText()));
             if(result == null)
                 JOptionPane.showMessageDialog(null, "Account number you entered doesn't exist","Information", JOptionPane.INFORMATION_MESSAGE);
             else{
@@ -193,7 +200,10 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                 layout.next(userProcessContainer);
             }
         }
-        
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Incorrect format entry", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
 
 
@@ -202,6 +212,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDeleteAccount;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnViewDetails;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAccount;
     private javax.swing.JTextField txtAccountNumber;
