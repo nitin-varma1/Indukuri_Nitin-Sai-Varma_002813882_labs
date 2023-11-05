@@ -9,13 +9,23 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Rushabh
+ * @author Nitin
  */
 public class Supplier {
     
     private String supplyName;
     private ProductCatalog productCatalog;
+    private String Description;
     private ImageIcon logoImage;
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String Description) {
+        this.Description = Description;
+    }
+    
 
     public ImageIcon getLogoImage() {
         return logoImage;

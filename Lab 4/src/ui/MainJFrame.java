@@ -11,7 +11,7 @@ import model.SupplierDirectory;
 
 /**
  *
- * @author archil
+ * @author Nitin
  */
 public class MainJFrame extends javax.swing.JFrame {
 

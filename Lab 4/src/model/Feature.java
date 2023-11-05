@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author archil
+ * @author Nitin
  */
 public class Feature {
     private Product owner;

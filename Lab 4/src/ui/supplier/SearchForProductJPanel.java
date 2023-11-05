@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Rushabh
+ * @author Nitin
  */
 public class SearchForProductJPanel extends javax.swing.JPanel {
 

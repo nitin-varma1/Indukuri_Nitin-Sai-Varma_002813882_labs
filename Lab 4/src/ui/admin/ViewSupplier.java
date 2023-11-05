@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Zerel
+ * @author Nitin
  */
 public class ViewSupplier extends javax.swing.JPanel {
 

@@ -6,16 +6,27 @@
 package model;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
- * @author Rushabh
+ * @author Nitin
  */
 public class Product {
     
     private String name;
     private int price;
     private int id;
+    private ImageIcon logoImage;
+
+    public ImageIcon getLogoImage() {
+        return logoImage;
+    }
+
+    public void setLogoImage(ImageIcon logoImage) {
+        this.logoImage = logoImage;
+    }
+    
 
     public ArrayList<Feature> getFeatures() {
         return features;
