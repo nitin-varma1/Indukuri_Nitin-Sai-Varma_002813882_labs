@@ -43,6 +43,7 @@ public class SupplierUpdatePanel extends javax.swing.JPanel {
         fileChooser.addChoosableFileFilter(jpegFilter);
         fileChooser.addChoosableFileFilter(pngFilter);
         fileChooser.setFileFilter(pngFilter);
+        populateData();
     }
 
     /**
@@ -244,4 +245,12 @@ public class SupplierUpdatePanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)workArea.getLayout();
         layout.previous(workArea);
     }
+    public void populateData()
+    {
+        txtName.setText(supplier.getSupplyName());
+        txtDescription.setText(supplier.getDescription());
+        imgLogo.setIcon(supplier.getLogoImage());
+    }
+
+    
 }

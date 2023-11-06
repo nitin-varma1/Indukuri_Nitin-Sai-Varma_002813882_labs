@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nitin
@@ -13,15 +15,20 @@ public class Feature {
     private Product owner;
     private String name;
     private Object value;
+    private ArrayList<Product> products;
     
     public Feature (Product owner){
         this.owner = owner;
+        products = new ArrayList<Product>();
+        products.add(owner);
     }
     
     public Feature (Product owner, String name, Object value){
         this.name = name;
         this.value = value;
         this.owner = owner;
+        products = new ArrayList<Product>();
+        products.add(owner);
     }
 
     public Product getOwner() {
@@ -50,6 +57,17 @@ public class Feature {
     
     public String toString(){
         return name;
+    }
+     public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void removeProduct(Product product) {
+        products.remove(product);
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
     }
 }
 

@@ -198,6 +198,12 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        
+        if(!isNumber(txtPrice.getText())){
+            JOptionPane.showMessageDialog(this, "Not an integer");
+            return;
+        }
+        else{
         Product product = supplier.getProductCatalog().addProduct();
         product.setName(txtName.getText());
         product.setLogoImage(logoImage);
@@ -208,6 +214,7 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(this, "Product successfully added", "Information", JOptionPane.INFORMATION_MESSAGE);
         backAction();
+        }
 }//GEN-LAST:event_btnAddActionPerformed
     private void backAction() {
         workArea.remove(this);
@@ -266,4 +273,11 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
+
+    private boolean isNumber(String text) {
+        for(char c: text.toCharArray())
+            if(!Character.isDigit(c))
+                return false;
+        return true;
+    }
 }

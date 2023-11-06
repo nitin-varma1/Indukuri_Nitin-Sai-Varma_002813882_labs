@@ -8,6 +8,7 @@ package ui.supplier;
 import model.Product;
 import model.Supplier;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -39,7 +40,7 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
 
         lblTitle = new javax.swing.JLabel();
         lblProductId = new javax.swing.JLabel();
-        idField = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -76,7 +77,7 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
                         .addGap(37, 37, 37)
                         .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
                         .addComponent(searchButton)))
                 .addContainerGap(343, Short.MAX_VALUE))
@@ -92,19 +93,34 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
                 .addComponent(lblProductId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idField, searchButton});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {searchButton, txtID});
 
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-        
-        
+       String id = txtID.getText();
+        Integer.parseInt(id);
+        if(id.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Please enter some value");
+        }
+        for(Product product:supplier.getProductCatalog().getProductCatalog())
+        {
+            if(product.getId()==Integer.parseInt(id))
+            {
+                ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(workArea, product);
+                workArea.add("ViewProductDetailJPanelSupplier",vpdjp);
+                CardLayout layout = (CardLayout) workArea.getLayout();
+                layout.next(workArea);   
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(this, "No product found for the ID");
 }//GEN-LAST:event_searchButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -116,10 +132,10 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField idField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblProductId;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JButton searchButton;
+    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }

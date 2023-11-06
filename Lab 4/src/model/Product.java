@@ -18,6 +18,16 @@ public class Product {
     private int price;
     private int id;
     private ImageIcon logoImage;
+    private static int count = 0;
+    
+    public Product() {
+        count++;
+        id = count;
+        
+        features = new ArrayList<Feature>();
+        
+    }
+      private ArrayList<Feature> features;
 
     public ImageIcon getLogoImage() {
         return logoImage;
@@ -42,23 +52,12 @@ public class Product {
     public Feature addNewFeature(){
         Feature newFeature = new Feature(this);
         features.add(newFeature);
+        newFeature.addProduct(this);
         
         return newFeature;
     }
     public static void setCount(int count) {
         Product.count = count;
-    }
-    
-    private ArrayList<Feature> features;
-
-    private static int count = 0;
-    
-    public Product() {
-        count++;
-        id = count;
-        
-        features = new ArrayList<Feature>();
-        
     }
 
     public String getName() {
